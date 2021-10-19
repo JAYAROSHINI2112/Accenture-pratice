@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main()
+{
+    int n,r,u,arr[20],sum=0,i,t,temp;
+    scanf("%d%d%d",&r,&u,&n);
+    for(i = 0; i < n; i++)
+     scanf("%d",&arr[i]);
+     
+     t = r*u;
+     for(i = 1; i <= n; i++)
+     {
+         sum += arr[i];
+         if(sum >= t)
+          {
+              temp = i;
+              break;
+          }
+     }
+     printf("%d",temp);
+}
