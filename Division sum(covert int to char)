@@ -1,0 +1,67 @@
+N-base notation is a system for writing numbers that uses only n different symbols, This symbols are the first n symbols from the given notation list(Including the symbol for o) Decimal to n base notation are (0:0, 1:1, 2:2, 3:3, 4:4, 5:5, 6:6, 7:7, 8:8, 9:9, 10:A,11:B and so on upto 35:Z)
+
+Implement the following function
+
+Char* DectoNBase(int n, int num):
+
+The function accept positive integer n and num Implement the function to calculate the n-base equivalent of num and return the same as a string
+
+Steps:
+
+Divide the decimal number by n,Treat the division as the integer division
+Write the the remainder (in  n-base notation)
+Divide the quotient again by n, Treat the division as integer division
+Repeat step 2 and 3 until the quotient is 0
+The n-base value is the sequence of the remainders from last to first
+Assumption:
+
+1 < n < = 36
+
+Example
+
+Input
+
+n: 12
+
+num: 718
+
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int i=0,n,q,r,d;
+    char str[20];
+    scanf("%d%d",&n,&d);
+    while(n != '\0')
+    {
+        q = n / d;
+        r = n % d;
+       // printf("%d ",r);
+        if(r<10)
+         str[i] = r + '0';
+        if(r == 10)
+         str[i] = 'A';
+        if(r == 11)
+         str[i] = 'B';
+        if(r == 12)
+         str[i] = 'C';
+         if(r == 18)
+         str[i] = 'I';
+         
+        n = q; i++;
+    }
+    for(i = 0; str[i] != '\0'; i++);
+    //printf("\n\n%d",i);
+    printf("\n");
+   for(int j = i; j >= 0; j--)
+    printf("%c",str[j]);
+}
